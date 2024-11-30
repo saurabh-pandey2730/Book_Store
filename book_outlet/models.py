@@ -12,7 +12,8 @@ class Book(models.Model):
         validators=[MinLengthValidator(1), MaxValueValidator(5)])
     author = models.CharField(null=True ,max_length=50)
     is_bestselling =  models.BooleanField(default=False)
-    slug = models.SlugField(default="" , null=False)
+    slug = models.SlugField(default="" , null=False, db_index=True,primary_key=True)
+    
     
     
     def save(self, *args , **kwargs):
